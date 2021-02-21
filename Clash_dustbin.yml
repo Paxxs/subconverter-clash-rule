@@ -156,6 +156,8 @@ dns:
     ## STUN Server
     - "stun.*.*"
     - "stun.*.*.*"
+    - connectivitycheck.gstatic.com
+
   nameserver:
     - 223.5.5.5 # 阿里DNS
     - 180.76.76.76 # 百度DNS
@@ -215,12 +217,13 @@ dns:
 
 tun:
   enable: true
-  stack: gvisor # only gvisor
+  stack: system # system or gvisor
   dns-hijack:
-    # - 222.246.129.80
     - 1.0.0.1:53
+    - tcp://8.8.8.8:53
+    - 8.8.8.8:1053
     - 198.18.0.2:53 # when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
-  macOS-auto-route: true # auto set global route for Windows
+  # macOS-auto-route: true # auto set global route for Windows
   # It is recommended to use `interface-name`
   # macOS-auto-detect-interface: true # 自动检测出口网卡
 
