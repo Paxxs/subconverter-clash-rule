@@ -23,3 +23,4 @@ https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3A%2F%2Fra
 
 - [clash-premium-installer](https://github.com/Kr328/clash-premium-installer)
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master)
+- [Clash gitbook](https://lancellc.gitbook.io/clash/)
