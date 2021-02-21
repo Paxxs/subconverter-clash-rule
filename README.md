@@ -18,3 +18,7 @@ https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3A%2F%2Fra
 - [Clash](http://clash.razord.top/#/proxies)
 
 填写 `ip:9090` 直接连接即可
+
+# 一些有用的链接
+
+- [clash-premium-installer](https://github.com/Kr328/clash-premium-installer)
