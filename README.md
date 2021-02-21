@@ -1,3 +1,4 @@
+# 订阅
 
 PC & Android:
 
@@ -10,3 +11,10 @@ Dustbin:
 ```shell
 https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3A%2F%2Fraw.githubusercontent.com%2FPaxxs%2Fsubconverter-clash-rule%2Fmain%2Fdusbin.ini
 ```
+
+# Web 界面
+
+- [yacd](http://yacd.haishan.me/)
+- [Clash](http://clash.razord.top/#/proxies)
+
+填写 `ip:9090` 直接连接即可
