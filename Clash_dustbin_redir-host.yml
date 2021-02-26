@@ -67,6 +67,11 @@ experimental:
 # 指定网口
 interface-name: eno1
 
+# 暴露统计
+profile:
+  # open tracing exporter API
+  tracing: true
+
 dns:
   enable: true # 是否启用dns false
   ipv6: true
