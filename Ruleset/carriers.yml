@@ -13,3 +13,9 @@ payload:
   - DOMAIN-SUFFIX,opencloud.wostore.cn
   - DOMAIN-SUFFIX,auth.wosms.cn
   - DOMAIN-SUFFIX,id.mail.wo.cn
+  - DOMAIN-SUFFIX,s2a.time.edu.cn
+ # - DOMAIN-SUFFIX,onekey.cmpassport.com
+  - DOMAIN-SUFFIX,enrichgw.10010.com
+  - DOMAIN-SUFFIX,cmpassport.com
+  - DOMAIN-SUFFIX,opencloud.wostore.cn
+  - DOMAIN-SUFFIX,nishub1.10010.com
