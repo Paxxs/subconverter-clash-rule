@@ -981,3 +981,47 @@ cfw-bypass:
   - 172.31.*
   - 192.168.*
   - <local>
+
+# 虚空终端
+## TCP并发
+tcp-concurrent: true
+
+## GEO数据模式
+geodata-mode: true
+## 自定 GEO 下载地址
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
+# 进程匹配模式 由 Clash 判断是否开启，在路由器上建议 off
+find-process-mode: strict
+## 按 Cloudflare Radar 数据按概率生成一个现代浏览器指纹。
+### 全局 TLS 指纹，优先低于 proxy 内的 client-fingerprint。
+global-client-fingerprint: random
+
+# 缓存
+profile:
+  store-selected: true
+  # 储存 API 对策略组的选择，以供下次启动时使用
+  store-fake-ip: true
+  # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
+
+## 域名嗅探
+sniffer:
+  enable: false
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
