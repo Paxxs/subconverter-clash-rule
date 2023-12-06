@@ -66,11 +66,14 @@ experimental:
 
 dns:
   enable: true # 是否启用dns false
-  ipv6: false
-  listen: 0.0.0.0:53
+  ipv6: true
+  listen: :1053
   enhanced-mode: fake-ip # 模式：redir-host或fake-ip
-  fake-ip-range: 198.18.0.1/16 #
+  fake-ip-range: 28.0.0.1/8 # copy 虚空终端懒人配置里的
   fake-ip-filter: # fake ip 白名单列表，如果你不知道这个参数的作用，请勿修改
+    - '*'
+    - '+.lan'
+    - '+.local'
     # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
     # === LAN ===
     - "*.lan"
@@ -154,27 +157,53 @@ dns:
     - "stun.*.*"
     - "stun.*.*.*"
   nameserver:
-    - 223.5.5.5 # 阿里DNS
-    - 180.76.76.76 # 百度DNS
-    - 119.29.29.29 # 腾讯DNS
-    - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
-    - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
-    - 114.114.114.114 # 114DNS
+    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query # 阿里 DoH DNS
+    # - 223.5.5.5 # 阿里DNS
+    # - 180.76.76.76 # 百度DNS
+    # - 119.29.29.29 # 腾讯DNS
+    # - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
+    # - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
+    # - 114.114.114.114 # 114DNS
     - https://doh.360.cn/dns-query # 360 DoH DNS
-  fallback:
+  fallback: # 后备域名解析服务器，一般情况下使用境外 DNS, 保证结果可信
     #  - 8.8.8.8 # 谷歌DNS
     #  - 1.1.1.1 # Cloudflare DNS
     #  - tls://dns.rubyfish.cn:853
-    - tls://1.0.0.1:853
+    # - tls://1.0.0.1:853
+    - tls://8.8.4.4
+    - tls://1.1.1.1
     #  - tls://dns.google:853
     #  - https://dns.rubyfish.cn/dns-query
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
   fallback-filter:
     geoip: true # 默认
+    geoip-code: CN # 除了 geoip-code 配置的国家 IP, 其他的 IP 结果会被视为污染
+    geosite: # geosite 列表的内容被视为已污染，匹配到 geosite 的域名，将只使用 fallback解析
+      - gfw
+    domain: # 这些域名被视为已污染，匹配到这些域名，会直接使用 fallback解析，不去使用 nameserver
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
     ipcidr: # 在这个网段内的 IP 地址会被考虑为被污染的 IP
       - 240.0.0.0/4
+  # 默认 DNS, 用于解析 DNS 服务器 的域名
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 8.8.8.8
+  # 代理节点域名解析服务器，仅用于解析代理节点的域名
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+  # 指定域名查询的解析服务器，可使用 geosite, 优先于 nameserver/fallback 查询
+  nameserver-policy:
+    "geosite:private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    "geosite:geolocation-!cn":
+      - 'https://dns.cloudflare.com/dns-query#dns'
+      - 'https://dns.google/dns-query#dns'
 
 # 1. clash DNS 请求逻辑：
 #   (1) 当访问一个域名时， nameserver 与 fallback 列表内的所有服务器并发请求，得到域名对应的 IP 地址。
@@ -212,14 +241,22 @@ dns:
 
 tun:
   enable: true
-  stack: gvisor # only gvisor
+  # tun 模式堆栈,如无使用问题,建议使用 system 栈;MacOS 用户推荐 gvisor 栈
+  stack: system # only gvisor
   dns-hijack:
+    - 'any:53' # dns 劫持,一般设置为 any:53 即可, 即劫持所有 53 端口的 udp 流量
+
+      # MacOS 无法自动劫持发往局域网的 dns 请求
+      # Android 如开启 私人dns 则无法自动劫持 dns 请求
+      # linux 如果 systemd-resolved 开启无法自动劫持 dns 请求
     # - 222.246.129.80
-    - 1.0.0.1:53
-    - 198.18.0.2:53 # when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
+    # - 1.0.0.1:53
+    # - 198.18.0.2:53 # when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
   macOS-auto-route: true # auto set global route for Windows
   # It is recommended to use `interface-name`
   macOS-auto-detect-interface: true # 自动检测出口网卡
+  auto-route: true # 自动设置全局路由,可以自动将全局流量路由进入 tun 网卡。
+  auto-detect-interface: true # 自动选择流量出口接口,多出口网卡同时连接的设备建议手动指定出口网卡
 
 # Clash for Windows
 # Proxies module latency test settings
