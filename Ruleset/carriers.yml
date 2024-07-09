@@ -1,11 +1,4 @@
 payload:
-  # - '+.cmpassport.com'
-  # - '+.hmrz.wo.cn'
-  # - '+.e.189.cn'
-  # - '+.id6.me'
-  # - '+.opencloud.wostore.cn'
-  # - '+.auth.wosms.cn'
-  # - '+.id.mail.wo.cn'
   - DOMAIN-SUFFIX,cmpassport.com
   - DOMAIN-SUFFIX,hmrz.wo.cn
   - DOMAIN-SUFFIX,e.189.cn
@@ -14,7 +7,8 @@ payload:
   - DOMAIN-SUFFIX,auth.wosms.cn
   - DOMAIN-SUFFIX,id.mail.wo.cn
   - DOMAIN-SUFFIX,s2a.time.edu.cn
- # - DOMAIN-SUFFIX,onekey.cmpassport.com
+  - DOMAIN-SUFFIX,mdn.open.wo.cn
+  - DOMAIN-SUFFIX,onekey.cmpassport.com
   - DOMAIN-SUFFIX,enrichgw.10010.com
   - DOMAIN-SUFFIX,cmpassport.com
   - DOMAIN-SUFFIX,opencloud.wostore.cn
