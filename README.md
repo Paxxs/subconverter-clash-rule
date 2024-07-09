@@ -1,6 +1,6 @@
 # 订阅
 
-## PC & Android:
+## PC & Android
 
 > CFW 建议使用 mixin 混合配置来动态启动 TUN
 
@@ -16,25 +16,15 @@ tun:
   macOS-auto-detect-interface: true # 自动检测出口网卡
 ```
 
-```
+```text
 https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3a%2f%2fraw.githubusercontent.com%2fPaxxs%2fsubconverter-clash-rule%2fmain%2fACL4SSR_Online_Full_AdblockPlus.ini
 ```
 
 ### TUN 模式
 
-```
+```text
 https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3a%2f%2fraw.githubusercontent.com%2fPaxxs%2fsubconverter-clash-rule%2fmain%2fACL4SSR_Online_Full_AdblockPlus_tun.ini
 ```
-
-## Arch
-
-> [AUR (en) - clash-tun](https://aur.archlinux.org/packages/clash-tun/)
-
-```
-https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3A%2F%2Fraw.githubusercontent.com%2FPaxxs%2Fsubconverter-clash-rule%2Fmain%2Farch.ini
-```
-
-## Dustbin:
 
 ### Web 界面
 
@@ -44,7 +34,6 @@ https://域名/sub?target=clash&url=訂閲&new_name=true&config=https%3A%2F%2Fra
 填写 `ip:9090` 直接连接即可
 
 或者下载静态资源放置配置文件目录下的 `ui` 目录
-
 
 > 全开启了 TUN
 
