@@ -1,8 +1,11 @@
 payload:
   - DOMAIN-SUFFIX,ocsp.apple.com
   - DOMAIN-SUFFIX,ocsp2.apple.com
+  - DOMAIN-SUFFIX,valid.apple.com
+  - DOMAIN-SUFFIX,crl.apple.com
+  - DOMAIN-SUFFIX,certs.apple.com
+  - DOMAIN-SUFFIX,appattest.apple.com
+  - DOMAIN-SUFFIX,vpp.itunes.apple.com
   - DOMAIN-SUFFIX,ocsp.g.aaplimg.com
   - DOMAIN-SUFFIX,ocsp-lb.apple.com.akadns.net
   - DOMAIN-SUFFIX,pq.apple.com
-  - DOMAIN-SUFFIX,ocsp2.apple.com
-  - DOMAIN-SUFFIX,certs.apple.com
