@@ -1,0 +1,8 @@
+payload:
+  # Goodnotes
+  - DOMAIN-SUFFIX,goodnotesapp.com.cn
+  - DOMAIN-SUFFIX,goodnotes.com
+  - DOMAIN-SUFFIX,goodnotes.email
+  - DOMAIN-SUFFIX,goodnotescloud.com
+  - DOMAIN-SUFFIX,goodnotesplatform.com
+  - DOMAIN-SUFFIX,notability.com
