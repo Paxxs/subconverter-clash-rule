@@ -7,6 +7,7 @@
 # 混合端口 HTTP和SOCKS5用一个端口
 mixed-port: 7890
 
+
 # HTTP 代理端口
 # port: 7890
 
@@ -45,7 +46,7 @@ external-controller: "0.0.0.0:9090"
 # external-ui: dashboard
 
 # RESTful API 的口令 (可选)
-# secret: ""
+secret: "morfans"
 
 # 实验性功能
 experimental:
